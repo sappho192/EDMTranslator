@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>EDMTranslator</Title>
+    <Authors>sappho192</Authors>
+    <Description>Text translator based on LLM models, especially EncoderDecoderModel in HuggingFace</Description>
+    <Copyright>Copyright (c) Taein Kim(sappho192)</Copyright>
+    <PackageProjectUrl>https://github.com/sappho192/EDMTranslator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sappho192/EDMTranslator.git</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>translator;llm;bert;gpt;library;japanese;korean</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BertJapaneseTokenizer" Version="1.0.7" />
+    <PackageReference Include="RelaxVersioner" Version="3.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Tokenizers.DotNet" Version="0.0.1" />
+    <PackageReference Include="Tokenizers.DotNet.runtime.win" Version="0.2.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EDMTranslator", "EDMTranslator\EDMTranslator.csproj", "{904CB9CA-E456-475F-88D3-529F06811465}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{80E859E8-5E44-4D2B-B09F-1B94B39F79DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{904CB9CA-E456-475F-88D3-529F06811465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904CB9CA-E456-475F-88D3-529F06811465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904CB9CA-E456-475F-88D3-529F06811465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904CB9CA-E456-475F-88D3-529F06811465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E859E8-5E44-4D2B-B09F-1B94B39F79DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E859E8-5E44-4D2B-B09F-1B94B39F79DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E859E8-5E44-4D2B-B09F-1B94B39F79DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E859E8-5E44-4D2B-B09F-1B94B39F79DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
