@@ -6,19 +6,21 @@ namespace EDMTranslator;
 public class BertJa2KoGPTTokenizer
 {
     private readonly BertJapaneseTokenizer.BertJapaneseTokenizer sourceTokenizer;
-    private readonly Tokenizers.DotNet.Tokenizer targetTokenizer;
+    private readonly Tokenizer targetTokenizer;
 
     // Unused & Should not be used
     private BertJa2KoGPTTokenizer()
     {
         sourceTokenizer = new BertJapaneseTokenizer.BertJapaneseTokenizer("", "");
-        targetTokenizer = new Tokenizers.DotNet.Tokenizer();
+        targetTokenizer = new Tokenizer("");
     }
 
-    public BertJa2KoGPTTokenizer(string dictDir, string vocabPath)
+    public BertJa2KoGPTTokenizer(string encoderDictDir, string encoderVocabPath,
+        string decoderVocabPath)
     {
-        sourceTokenizer = new BertJapaneseTokenizer.BertJapaneseTokenizer(dictDir, vocabPath);
-        targetTokenizer = new Tokenizers.DotNet.Tokenizer();
+        sourceTokenizer = new BertJapaneseTokenizer.BertJapaneseTokenizer(
+            dictPath: encoderDictDir, vocabPath: encoderVocabPath);
+        targetTokenizer = new Tokenizer(vocabPath: decoderVocabPath);
     }
 
     public (int[], int[]) Encode(string sentence)

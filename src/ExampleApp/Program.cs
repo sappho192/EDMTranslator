@@ -1,17 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
-using EDMTranslator;
+﻿using EDMTranslator;
 
-var vocabPath = await BertJapaneseTokenizer.HuggingFace.GetVocabFromHub("tohoku-nlp/bert-base-japanese-v2");
+var encoderVocabPath = await BertJapaneseTokenizer.HuggingFace.GetVocabFromHub("tohoku-nlp/bert-base-japanese-v2");
 // Prepare the tokenizer for decoding
 var hubName = "skt/kogpt2-base-v2";
-var filePath = "tokenizer.json";
-var fileFullPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, filePath, "deps");
-var tokenizerPath = "tokenizer.path.txt";
-await File.WriteAllTextAsync(tokenizerPath, fileFullPath);
+var decoderVocabFilename = "tokenizer.json";
+var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
 
-var tokenizer = new BertJa2KoGPTTokenizer(dictDir: @"D:\DATASET\unidic-mecab-2.1.2_bin", vocabPath: vocabPath);
+var tokenizer = new BertJa2KoGPTTokenizer(
+    encoderDictDir: @"D:\DATASET\unidic-mecab-2.1.2_bin", encoderVocabPath: encoderVocabPath,
+    decoderVocabPath: decoderVocabPath);
 
-Console.WriteLine("Tokenizer test");
+Console.WriteLine("--Tokenizer test--");
 Console.WriteLine("[Encode]");
 var sentenceJa = "打ち合わせが終わった後にご飯を食べましょう。";
 Console.WriteLine($"Input: {sentenceJa}");
