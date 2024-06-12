@@ -2,7 +2,7 @@
 {
     public interface ITokenizer
     {
-        public (int[], int[]) Encode(string input);
-        public string Decode(uint[] input);
+        public (int[], int[]) Encode(string sentence);
+        public string Decode(uint[] tokens);
     }
 }

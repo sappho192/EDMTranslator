@@ -3,7 +3,7 @@ using Tokenizers.DotNet;
 
 namespace EDMTranslator;
 
-public class BertJa2KoGPTTokenizer
+public class BertJa2KoGPTTokenizer : ITokenizer
 {
     private readonly BertJapaneseTokenizer.BertJapaneseTokenizer sourceTokenizer;
     private readonly Tokenizer targetTokenizer;
