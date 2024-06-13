@@ -8,6 +8,7 @@
     - [Japanese dictionary](#japanese-dictionary)
     - [Fine-tuned translator model](#fine-tuned-translator-model)
   - [Implement the driver code](#implement-the-driver-code)
+- [How to build](#how-to-build)
 
 # EDMTranslator
 
@@ -107,3 +108,12 @@ static void Translate(FF14Translator translator, string sentence)
     Console.WriteLine($"Translated: {translated}");
 }
 ```
+
+# How to build
+
+1. Prepare following stuff:
+   1.  .NET build system (`dotnet 6.0`)
+   2.  PowerShell (Recommend `7.4.2` or above)
+2. Run `cbuild.ps1`
+
+The build artifact will be saved in `nuget` directory.  
