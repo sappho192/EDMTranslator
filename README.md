@@ -46,7 +46,7 @@ Following guide supposes that you are to use FF14JaKoTranslator mentioned above.
 
 ### Fine-tuned translator model
 
-* Download the translator model from [sappho192/ffxiv-ja-ko-translator/releases](https://github.com/sappho192/ffxiv-ja-ko-translator/releases/tag/0.2.1) and unzip the archive into somewhere
+* Download the translator model from [sappho192/ffxiv-ja-ko-translator/releases](https://github.com/sappho192/ffxiv-ja-ko-translator/releases/tag/0.2.1) (especially `onnx_model.7z`) and unzip the archive into somewhere
 
 ## Implement the driver code
 
