@@ -32,8 +32,8 @@ TestTokenizer(tokenizer);
 
 // Prepare the translator
 string modelDir = @"D:\MODEL\ffxiv-ja-ko-translator\onnx";
-var translator = new FF14Translator(tokenizer, modelDir);
-void TestTranslator(FF14Translator translator)
+var translator = new FF14JaKoTranslator(tokenizer, modelDir);
+void TestTranslator(FF14JaKoTranslator translator)
 {
     Console.WriteLine("--Translator test--");
     Translate(translator, "打ち合わせが終わった後にご飯を食べましょう。");
@@ -43,7 +43,7 @@ void TestTranslator(FF14Translator translator)
 }
 TestTranslator(translator);
 
-static void Translate(FF14Translator translator, string sentence)
+static void Translate(FF14JaKoTranslator translator, string sentence)
 {
     Console.WriteLine($"SourceText: {sentence}");
     string translated = translator.Translate(sentence);

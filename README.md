@@ -26,12 +26,12 @@ Text translator library based on LLM models, especially EncoderDecoderModel in H
 
 # Supported models
 
-* FF14Translator([sappho192/ffxiv-ja-ko-translator](https://github.com/sappho192/ffxiv-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`
+* FF14JaKoTranslator([sappho192/ffxiv-ja-ko-translator](https://github.com/sappho192/ffxiv-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`
 * More to be added...
 
 # Quickstart
 
-Following guide supposes that you are to use FF14Translator mentioned above.
+Following guide supposes that you are to use FF14JaKoTranslator mentioned above.
 
 ## Install the packages
 
@@ -54,7 +54,7 @@ Write the code like below and you are good to go 🫡
 Note that you need to fix the path of `encoderDictDir` and `modelDir` correctly.
 
 ```csharp
- // Console application which translates Japanese sentence to Korean based on FF14Translator
+ // Console application which translates Japanese sentence to Korean based on FF14JaKoTranslator
 
 using EDMTranslator.Tokenization;
 using EDMTranslator.Translation;
@@ -90,8 +90,8 @@ TestTokenizer(tokenizer);
 
 // Prepare the translator
 string modelDir = @"D:\MODEL\ffxiv-ja-ko-translator\onnx"; // Contains encoder_model.onnx and decoder_model_merged.onnx
-var translator = new FF14Translator(tokenizer, modelDir);
-void TestTranslator(FF14Translator translator)
+var translator = new FF14JaKoTranslator(tokenizer, modelDir);
+void TestTranslator(FF14JaKoTranslator translator)
 {
     Console.WriteLine("--Translator test--");
     Translate(translator, "打ち合わせが終わった後にご飯を食べましょう。");
@@ -101,7 +101,7 @@ void TestTranslator(FF14Translator translator)
 }
 TestTranslator(translator);
 
-static void Translate(FF14Translator translator, string sentence)
+static void Translate(FF14JaKoTranslator translator, string sentence)
 {
     Console.WriteLine($"SourceText: {sentence}");
     string translated = translator.Translate(sentence);
