@@ -7,13 +7,14 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>EDMTranslator</Title>
     <Authors>sappho192</Authors>
-    <Description>Text translator based on LLM models, especially EncoderDecoderModel in HuggingFace</Description>
+    <Description>Text translator library based on LLM models, especially EncoderDecoderModel in HuggingFace</Description>
     <Copyright>Copyright (c) Taein Kim(sappho192)</Copyright>
     <PackageProjectUrl>https://github.com/sappho192/EDMTranslator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sappho192/EDMTranslator.git</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <PackageTags>translator;llm;bert;gpt;library;japanese;korean</PackageTags>
+    <NuspecFile>EDMTranslator.nuspec</NuspecFile>
   </PropertyGroup>
 
   <ItemGroup>
