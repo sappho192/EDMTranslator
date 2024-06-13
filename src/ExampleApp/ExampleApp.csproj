@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Tokenizers.DotNet.runtime.win" Version="0.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EDMTranslator\EDMTranslator.csproj" />
   </ItemGroup>
 
