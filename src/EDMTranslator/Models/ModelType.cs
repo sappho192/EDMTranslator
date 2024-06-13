@@ -1,4 +1,4 @@
-﻿namespace EDMTranslator
+﻿namespace EDMTranslator.Models
 {
     /// <summary>
     /// Original model types

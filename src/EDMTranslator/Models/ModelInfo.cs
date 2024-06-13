@@ -1,4 +1,4 @@
-﻿namespace EDMTranslator
+﻿namespace EDMTranslator.Models
 {
     public class ModelInfo
     {

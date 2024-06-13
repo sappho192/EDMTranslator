@@ -1,4 +1,4 @@
-﻿namespace EDMTranslator
+﻿namespace EDMTranslator.Tokenization
 {
     public interface ITokenizer
     {

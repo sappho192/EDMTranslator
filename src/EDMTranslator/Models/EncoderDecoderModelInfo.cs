@@ -1,4 +1,6 @@
-﻿namespace EDMTranslator
+﻿using EDMTranslator.Models;
+
+namespace EDMTranslator
 {
     public sealed class EncoderDecoderModelInfo : ModelInfo
     {

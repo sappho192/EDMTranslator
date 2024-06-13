@@ -1,7 +1,7 @@
 ﻿using BertJapaneseTokenizer;
 using Tokenizers.DotNet;
 
-namespace EDMTranslator;
+namespace EDMTranslator.Tokenization;
 
 public class BertJa2KoGPTTokenizer : ITokenizer
 {

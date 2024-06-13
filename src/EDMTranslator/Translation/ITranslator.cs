@@ -1,4 +1,4 @@
-﻿namespace EDMTranslator
+﻿namespace EDMTranslator.Translation
 {
     public interface ITranslator
     {
