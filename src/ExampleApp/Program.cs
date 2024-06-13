@@ -7,8 +7,9 @@ var hubName = "skt/kogpt2-base-v2";
 var decoderVocabFilename = "tokenizer.json";
 var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
 
+string encoderDictDir = @"D:\DATASET\unidic-mecab-2.1.2_bin";
 var tokenizer = new BertJa2KoGPTTokenizer(
-    encoderDictDir: @"D:\DATASET\unidic-mecab-2.1.2_bin", encoderVocabPath: encoderVocabPath,
+    encoderDictDir: encoderDictDir, encoderVocabPath: encoderVocabPath,
     decoderVocabPath: decoderVocabPath);
 
 void TestTokenizer(ITokenizer tokenizer)
@@ -21,6 +22,7 @@ void TestTokenizer(ITokenizer tokenizer)
     Console.WriteLine($"Encoded: {string.Join(", ", embeddingsJa)}");
 
     Console.WriteLine("[Decode]");
+    // Tokens of "음, 이제 식사도 해볼까요"
     var tokens = new uint[] { 9330, 387, 12857, 9376, 18649, 9098, 7656, 6969, 8084, 1 };
     Console.WriteLine($"Input: {string.Join(", ", tokens)}");
     var decoded = tokenizer.Decode(tokens);
@@ -29,7 +31,8 @@ void TestTokenizer(ITokenizer tokenizer)
 TestTokenizer(tokenizer);
 
 // Prepare the translator
-var translator = new FF14Translator(tokenizer, @"D:\MODEL\ffxiv-ja-ko-translator\onnx");
+string modelDir = @"D:\MODEL\ffxiv-ja-ko-translator\onnx";
+var translator = new FF14Translator(tokenizer, modelDir);
 void TestTranslator(FF14Translator translator)
 {
     Console.WriteLine("--Translator test--");
