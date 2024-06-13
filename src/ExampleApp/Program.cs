@@ -1,8 +1,8 @@
 ﻿using EDMTranslator.Tokenization;
 using EDMTranslator.Translation;
 
+// Prepare the tokenizer
 var encoderVocabPath = await BertJapaneseTokenizer.HuggingFace.GetVocabFromHub("tohoku-nlp/bert-base-japanese-v2");
-// Prepare the tokenizer for decoding
 var hubName = "skt/kogpt2-base-v2";
 var decoderVocabFilename = "tokenizer.json";
 var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
@@ -28,3 +28,21 @@ void TestTokenizer(ITokenizer tokenizer)
 }
 TestTokenizer(tokenizer);
 
+// Prepare the translator
+var translator = new FF14Translator(tokenizer, @"D:\MODEL\ffxiv-ja-ko-translator\onnx");
+void TestTranslator(FF14Translator translator)
+{
+    Console.WriteLine("--Translator test--");
+    Translate(translator, "打ち合わせが終わった後にご飯を食べましょう。");
+    Translate(translator, "試験前に緊張したあまり、熱がでてしまった。");
+    Translate(translator, "山田は英語にかけてはクラスの誰にも負けない。");
+    Translate(translator, "この本によれば、最初の人工橋梁は新石器時代にさかのぼるという。");
+}
+TestTranslator(translator);
+
+static void Translate(FF14Translator translator, string sentence)
+{
+    Console.WriteLine($"SourceText: {sentence}");
+    string translated = translator.Translate(sentence);
+    Console.WriteLine($"Translated: {translated}");
+}
