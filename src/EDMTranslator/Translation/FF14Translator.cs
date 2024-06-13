@@ -78,8 +78,8 @@ namespace EDMTranslator.Translation
             decoderInput[0] = NamedOnnxValue.CreateFromTensor("input_ids", inputIdsTensor);
 
             // Initialize the list to store the generated tokens
-            List<long> generatedTokens = [];
-            IEnumerable<IEnumerable<DisposableNamedOnnxValue>> packedPastKeyValues = [];
+            List<long> generatedTokens = new();
+            IEnumerable<IEnumerable<DisposableNamedOnnxValue>> packedPastKeyValues = new List<List<DisposableNamedOnnxValue>>();
 
             // Greedy search loop
             for (int i = 0; i < maxLength; i++)
@@ -161,7 +161,7 @@ namespace EDMTranslator.Translation
             var results = session.Run(input_data);
 
             var outPastKeyValues = results.Skip(1).ToList();
-            List<List<DisposableNamedOnnxValue>> newPastKeyValues = [];
+            List<List<DisposableNamedOnnxValue>> newPastKeyValues;
 
             // Similar to the Python code, depending on the value of use_cache_branch, pack the out_past_key_values into groups of num_pkv units
             // ((DenseTensor<bool>)input_data[2].Value)[0]
@@ -211,7 +211,7 @@ namespace EDMTranslator.Translation
             var results = session.Run(input_data);
 
             var outPastKeyValues = results.Skip(1).ToList();
-            IEnumerable<IEnumerable<DisposableNamedOnnxValue>> newPastKeyValues = [];
+            IEnumerable<IEnumerable<DisposableNamedOnnxValue>> newPastKeyValues;
 
             // Combine the first two units of out_past_key_values with the last two units of past_key_values
             var unpackedNewPastKeyValues = CombineTuples(outPastKeyValues, past_key_values, 4);
@@ -225,7 +225,7 @@ namespace EDMTranslator.Translation
 
         private List<DisposableNamedOnnxValue> CombineTuples(List<DisposableNamedOnnxValue> outPastKeyValues, List<DisposableNamedOnnxValue> pastKeyValues, int numPkvs)
         {
-            List<DisposableNamedOnnxValue> newOutPastKeyValues = [];
+            List<DisposableNamedOnnxValue> newOutPastKeyValues = new();
             for (int i = 0; i < outPastKeyValues.Count; i += numPkvs)
             {
                 var temp = outPastKeyValues.GetRange(i, 2);
