@@ -26,7 +26,8 @@ Text translator library based on LLM models, especially EncoderDecoderModel in H
 
 # Supported models
 
-* FF14JaKoTranslator([sappho192/ffxiv-ja-ko-translator](https://github.com/sappho192/ffxiv-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`
+* FF14JaKoTranslator([sappho192/ffxiv-ja-ko-translator](https://github.com/sappho192/ffxiv-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`, fine-tuned with FF14 dataset
+* AihubJaKoTranslator([sappho192/aihub-ja-ko-translator](https://huggingface.co/sappho192/aihub-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`, fine-tuned with AIHub dataset
 * More to be added...
 
 # Quickstart
