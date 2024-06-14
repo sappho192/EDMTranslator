@@ -11,4 +11,10 @@
         public string EncoderDictDir { get; set; }
         public string ModelDir { get; set; }
     }
+
+    public class JESCJaEnTranslatorConfig
+    {
+        public string EncoderDictDir { get; set; }
+        public string ModelDir { get; set; }
+    }
 }

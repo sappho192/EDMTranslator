@@ -5,3 +5,6 @@ ff14_ja_ko_translator:
 aihub_ja_ko_translator:
   encoder_dict_dir: D:\DATASET\unidic-mecab-2.1.2_bin
   model_dir: D:\MODEL\aihub-ja-ko\onnx
+jesc_ja_en_translator:
+  encoder_dict_dir: D:\DATASET\unidic-mecab-2.1.2_bin
+  model_dir: D:\MODEL\jesc-ja-en\onnx
