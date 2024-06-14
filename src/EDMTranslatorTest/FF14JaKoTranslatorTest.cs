@@ -1,5 +1,6 @@
 ﻿using EDMTranslator.Tokenization;
 using EDMTranslator.Translation;
+using Xunit.Abstractions;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -13,8 +14,12 @@ namespace EDMTranslatorTest
         private readonly string encoderDictDir;
         private readonly string modelDir;
 
-        public FF14JaKoTranslatorTest()
+        private readonly ITestOutputHelper output;
+
+        public FF14JaKoTranslatorTest(ITestOutputHelper output)
         {
+            this.output = output;
+
             var deserializer = new DeserializerBuilder()
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
                 .Build();
@@ -33,6 +38,7 @@ namespace EDMTranslatorTest
         public async Task TestTranslatorAsync()
         {
             tokenizer ??= await InitTokenizerAsync();
+            TestTokenizer(tokenizer);
             translator ??= InitTranslator();
             TestTranslator(translator);
         }
@@ -56,37 +62,37 @@ namespace EDMTranslatorTest
             return new FF14JaKoTranslator(tokenizer, modelDir);
         }
 
-        private static void TestTokenizer(ITokenizer tokenizer)
+        private void TestTokenizer(ITokenizer tokenizer)
         {
-            Console.WriteLine("--Tokenizer test--");
-            Console.WriteLine("[Encode]");
+            output.WriteLine("--Tokenizer test--");
+            output.WriteLine("[Encode]");
             var sentenceJa = "打ち合わせが終わった後にご飯を食べましょう。";
-            Console.WriteLine($"Input: {sentenceJa}");
+            output.WriteLine($"Input: {sentenceJa}");
             var (embeddingsJa, attentionMask) = tokenizer.Encode(sentenceJa);
-            Console.WriteLine($"Encoded: {string.Join(", ", embeddingsJa)}");
+            output.WriteLine($"Encoded: {string.Join(", ", embeddingsJa)}");
 
-            Console.WriteLine("[Decode]");
+            output.WriteLine("[Decode]");
             // Tokens of "음, 이제 식사도 해볼까요"
             var tokens = new uint[] { 9330, 387, 12857, 9376, 18649, 9098, 7656, 6969, 8084, 1 };
-            Console.WriteLine($"Input: {string.Join(", ", tokens)}");
+            output.WriteLine($"Input: {string.Join(", ", tokens)}");
             var decoded = tokenizer.Decode(tokens);
-            Console.WriteLine($"Decoded: {decoded}");
+            output.WriteLine($"Decoded: {decoded}");
         }
 
-        private static void TestTranslator(FF14JaKoTranslator translator)
+        private void TestTranslator(FF14JaKoTranslator translator)
         {
-            Console.WriteLine("--Translator test--");
+            output.WriteLine("--Translator test--");
             Translate(translator, "打ち合わせが終わった後にご飯を食べましょう。");
             Translate(translator, "試験前に緊張したあまり、熱がでてしまった。");
             Translate(translator, "山田は英語にかけてはクラスの誰にも負けない。");
             Translate(translator, "この本によれば、最初の人工橋梁は新石器時代にさかのぼるという。");
         }
 
-        private static void Translate(FF14JaKoTranslator translator, string sentence)
+        private void Translate(FF14JaKoTranslator translator, string sentence)
         {
-            Console.WriteLine($"SourceText: {sentence}");
+            output.WriteLine($"SourceText: {sentence}");
             string translated = translator.Translate(sentence);
-            Console.WriteLine($"Translated: {translated}");
+            output.WriteLine($"Translated: {translated}");
         }
 
         public void Dispose()

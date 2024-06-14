@@ -1,5 +1,6 @@
 ﻿using EDMTranslator.Tokenization;
 using EDMTranslator.Translation;
+using Xunit.Abstractions;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -13,8 +14,12 @@ namespace EDMTranslatorTest
         private readonly string encoderDictDir;
         private readonly string modelDir;
 
-        public AihubJaKoTranslatorTest()
+        private readonly ITestOutputHelper output;
+
+        public AihubJaKoTranslatorTest(ITestOutputHelper output)
         {
+            this.output = output;
+
             var deserializer = new DeserializerBuilder()
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
                 .Build();
@@ -58,37 +63,37 @@ namespace EDMTranslatorTest
             return new AIhubJaKoTranslator(tokenizer, modelDir);
         }
 
-        private static void TestTokenizer(ITokenizer tokenizer)
+        private void TestTokenizer(ITokenizer tokenizer)
         {
-            Console.WriteLine("--Tokenizer test--");
-            Console.WriteLine("[Encode]");
+            output.WriteLine("--Tokenizer test--");
+            output.WriteLine("[Encode]");
             var sentenceJa = "打ち合わせが終わった後にご飯を食べましょう。";
-            Console.WriteLine($"Input: {sentenceJa}");
+            output.WriteLine($"Input: {sentenceJa}");
             var (embeddingsJa, attentionMask) = tokenizer.Encode(sentenceJa);
-            Console.WriteLine($"Encoded: {string.Join(", ", embeddingsJa)}");
+            output.WriteLine($"Encoded: {string.Join(", ", embeddingsJa)}");
 
-            Console.WriteLine("[Decode]");
+            output.WriteLine("[Decode]");
             // Tokens of "음, 이제 식사도 해볼까요"
             var tokens = new uint[] { 9330, 387, 12857, 9376, 18649, 9098, 7656, 6969, 8084, 1 };
-            Console.WriteLine($"Input: {string.Join(", ", tokens)}");
+            output.WriteLine($"Input: {string.Join(", ", tokens)}");
             var decoded = tokenizer.Decode(tokens);
-            Console.WriteLine($"Decoded: {decoded}");
+            output.WriteLine($"Decoded: {decoded}");
         }
 
-        private static void TestTranslator(AIhubJaKoTranslator translator)
+        private void TestTranslator(AIhubJaKoTranslator translator)
         {
-            Console.WriteLine("--Translator test--");
+            output.WriteLine("--Translator test--");
             Translate(translator, "打ち合わせが終わった後にご飯を食べましょう。");
             Translate(translator, "試験前に緊張したあまり、熱がでてしまった。");
             Translate(translator, "山田は英語にかけてはクラスの誰にも負けない。");
             Translate(translator, "この本によれば、最初の人工橋梁は新石器時代にさかのぼるという。");
         }
 
-        private static void Translate(AIhubJaKoTranslator translator, string sentence)
+        private void Translate(AIhubJaKoTranslator translator, string sentence)
         {
-            Console.WriteLine($"SourceText: {sentence}");
+            output.WriteLine($"SourceText: {sentence}");
             string translated = translator.Translate(sentence);
-            Console.WriteLine($"Translated: {translated}");
+            output.WriteLine($"Translated: {translated}");
         }
 
         public void Dispose()
