@@ -9,7 +9,7 @@ namespace EDMTranslatorTest
     public class AihubJaKoTranslatorTest : IDisposable
     {
         private BertJa2GPTTokenizer? tokenizer;
-        private FF14JaKoTranslator? translator;
+        private AIhubJaKoTranslator? translator;
         private readonly string encoderDictDir;
         private readonly string modelDir;
 
@@ -52,10 +52,10 @@ namespace EDMTranslatorTest
                                               decoderVocabPath: decoderVocabPath);
         }
 
-        private FF14JaKoTranslator InitTranslator()
+        private AIhubJaKoTranslator InitTranslator()
         {
             // Prepare the translator
-            return new FF14JaKoTranslator(tokenizer, modelDir);
+            return new AIhubJaKoTranslator(tokenizer, modelDir);
         }
 
         private static void TestTokenizer(ITokenizer tokenizer)
@@ -75,7 +75,7 @@ namespace EDMTranslatorTest
             Console.WriteLine($"Decoded: {decoded}");
         }
 
-        private static void TestTranslator(FF14JaKoTranslator translator)
+        private static void TestTranslator(AIhubJaKoTranslator translator)
         {
             Console.WriteLine("--Translator test--");
             Translate(translator, "打ち合わせが終わった後にご飯を食べましょう。");
@@ -84,7 +84,7 @@ namespace EDMTranslatorTest
             Translate(translator, "この本によれば、最初の人工橋梁は新石器時代にさかのぼるという。");
         }
 
-        private static void Translate(FF14JaKoTranslator translator, string sentence)
+        private static void Translate(AIhubJaKoTranslator translator, string sentence)
         {
             Console.WriteLine($"SourceText: {sentence}");
             string translated = translator.Translate(sentence);
