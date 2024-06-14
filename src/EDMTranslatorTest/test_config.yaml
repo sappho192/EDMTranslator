@@ -1,0 +1,4 @@
+﻿---
+ff14_ja_ko_translator:
+  encoder_dict_dir: D:\DATASET\unidic-mecab-2.1.2_bin
+  model_dir: D:\MODEL\ffxiv-ja-ko-translator\onnx
