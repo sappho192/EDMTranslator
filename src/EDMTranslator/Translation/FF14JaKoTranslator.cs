@@ -58,7 +58,7 @@ namespace EDMTranslator.Translation
                 NamedOnnxValue.CreateFromTensor("use_cache_branch", useCacheBranch.ToMuliDimArray<bool>().ToTensor<bool>())
             };
 
-            var generatedText = GreedySearch(decoderInput, decoderSession);
+            var generatedText = GreedySearch(decoderInput, decoderSession, 1, 1);
             return generatedText;
         }
     }

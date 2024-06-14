@@ -24,11 +24,10 @@ namespace EDMTranslator.Models
             return np.zeros<float>(1, 12, inputIdLength, 64).ToMuliDimArray<float>().ToTensor<float>();
         }
 
-        protected string GreedySearch(List<NamedOnnxValue> decoderInput, InferenceSession decoderSession, int maxLength = 50)
+        protected string GreedySearch(List<NamedOnnxValue> decoderInput, InferenceSession decoderSession,
+            long bosTokenId, long eosTokenId, int maxLength = 50)
         {
             // Initialize the input for the decoder with the BOS token ID
-            long bosTokenId = 1;
-            long eosTokenId = 1;
             var inputIds = new long[] { bosTokenId };
             var inputIdsTensor = new DenseTensor<long>(inputIds, new[] { 1, inputIds.Length });
             // Update input_ids for the decoder
