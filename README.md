@@ -56,7 +56,7 @@ Write the code like below and you are good to go 🫡
 Note that you need to fix the path of `encoderDictDir` and `modelDir` correctly.
 
 ```csharp
- // Console application which translates Japanese sentence to Korean based on FF14JaKoTranslator
+ // Console application which translates Japanese sentence to English with JESCJaEnTranslator
 
 using EDMTranslator.Tokenization;
 using EDMTranslator.Translation;
