@@ -3,19 +3,19 @@ using Tokenizers.DotNet;
 
 namespace EDMTranslator.Tokenization;
 
-public class BertJa2KoGPTTokenizer : ITokenizer
+public class BertJa2GPTTokenizer : ITokenizer
 {
     private readonly BertJapaneseTokenizer.BertJapaneseTokenizer sourceTokenizer;
     private readonly Tokenizer targetTokenizer;
 
     // Unused & Should not be used
-    private BertJa2KoGPTTokenizer()
+    private BertJa2GPTTokenizer()
     {
         sourceTokenizer = new BertJapaneseTokenizer.BertJapaneseTokenizer("", "");
         targetTokenizer = new Tokenizer("");
     }
 
-    public BertJa2KoGPTTokenizer(string encoderDictDir, string encoderVocabPath,
+    public BertJa2GPTTokenizer(string encoderDictDir, string encoderVocabPath,
         string decoderVocabPath)
     {
         sourceTokenizer = new BertJapaneseTokenizer.BertJapaneseTokenizer(

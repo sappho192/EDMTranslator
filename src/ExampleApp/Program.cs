@@ -8,7 +8,7 @@ var decoderVocabFilename = "tokenizer.json";
 var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
 
 string encoderDictDir = @"D:\DATASET\unidic-mecab-2.1.2_bin";
-var tokenizer = new BertJa2KoGPTTokenizer(
+var tokenizer = new BertJa2GPTTokenizer(
     encoderDictDir: encoderDictDir, encoderVocabPath: encoderVocabPath,
     decoderVocabPath: decoderVocabPath);
 

@@ -11,7 +11,7 @@ namespace EDMTranslator.Translation
         private readonly InferenceSession encoderSession;
         private readonly InferenceSession decoderSession;
 
-        public FF14JaKoTranslator(BertJa2KoGPTTokenizer tokenizer, string modelDirPath) : base(
+        public FF14JaKoTranslator(BertJa2GPTTokenizer tokenizer, string modelDirPath) : base(
             modelName: "ffxiv-ja-ko-translator",
             modelHubName: "sappho192/ffxiv-ja-ko-translator",
             tokenizer: tokenizer)
