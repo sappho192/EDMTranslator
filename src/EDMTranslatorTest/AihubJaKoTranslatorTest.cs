@@ -6,14 +6,14 @@ using YamlDotNet.Serialization.NamingConventions;
 namespace EDMTranslatorTest
 {
     [Collection("Sequential")]
-    public class FF14JaKoTranslatorTest : IDisposable
+    public class AihubJaKoTranslatorTest : IDisposable
     {
         private BertJa2GPTTokenizer? tokenizer;
         private FF14JaKoTranslator? translator;
         private readonly string encoderDictDir;
         private readonly string modelDir;
 
-        public FF14JaKoTranslatorTest()
+        public AihubJaKoTranslatorTest()
         {
             var deserializer = new DeserializerBuilder()
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
@@ -21,8 +21,8 @@ namespace EDMTranslatorTest
             // read test_config.yaml
             using (var reader = new StreamReader("test_config.yaml"))
             {
-                var yaml = deserializer.Deserialize<Dictionary<string, FF14JaKoTranslatorConfig>>(reader);
-                var config = yaml["ff14_ja_ko_translator"];
+                var yaml = deserializer.Deserialize<Dictionary<string, AihubJaKoTranslatorConfig>>(reader);
+                var config = yaml["aihub_ja_ko_translator"];
 
                 encoderDictDir = config.EncoderDictDir;
                 modelDir = config.ModelDir;
@@ -33,6 +33,8 @@ namespace EDMTranslatorTest
         public async Task TestTranslatorAsync()
         {
             tokenizer ??= await InitTokenizerAsync();
+            TestTokenizer(tokenizer);
+
             translator ??= InitTranslator();
             TestTranslator(translator);
         }
