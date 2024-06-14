@@ -26,13 +26,14 @@ Text translator library based on LLM models, especially EncoderDecoderModel in H
 
 # Supported models
 
+* JESCJaEnTranslator([sappho192/jesc-ja-en-translator](https://huggingface.co/sappho192/jesc-ja-en-translator)): Japanese-to-English translator based on `bert-base-japanese` and `gpt2`, fine-tuned with JESC dataset
 * FF14JaKoTranslator([sappho192/ffxiv-ja-ko-translator](https://github.com/sappho192/ffxiv-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`, fine-tuned with FF14 dataset
 * AihubJaKoTranslator([sappho192/aihub-ja-ko-translator](https://huggingface.co/sappho192/aihub-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`, fine-tuned with AIHub dataset
 * More to be added...
 
 # Quickstart
 
-Following guide supposes that you are to use FF14JaKoTranslator mentioned above.
+Following guide **supposes that you are to use JESCJaEnTranslator** mentioned above.
 
 ## Install the packages
 
@@ -47,7 +48,7 @@ Following guide supposes that you are to use FF14JaKoTranslator mentioned above.
 
 ### Fine-tuned translator model
 
-* Download the translator model from [sappho192/ffxiv-ja-ko-translator/releases](https://github.com/sappho192/ffxiv-ja-ko-translator/releases/tag/0.2.1) (especially `onnx_model.7z`) and unzip the archive into somewhere
+* Download the translator model from [sappho192/jesc-ja-en-translator](https://huggingface.co/sappho192/jesc-ja-en-translator/blob/main/onnx_jesc-ja-en.7z) (especially `onnx_jesc-ja-en.7z`) and unzip the archive into somewhere
 
 ## Implement the driver code
 
@@ -62,12 +63,12 @@ using EDMTranslator.Translation;
 
 // Prepare the tokenizer
 var encoderVocabPath = await BertJapaneseTokenizer.HuggingFace.GetVocabFromHub("tohoku-nlp/bert-base-japanese-v2");
-var hubName = "skt/kogpt2-base-v2";
+var hubName = "openai-community/gpt2";
 var decoderVocabFilename = "tokenizer.json";
 var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
 
 string encoderDictDir = @"D:\DATASET\unidic-mecab-2.1.2_bin";
-var tokenizer = new BertJa2KoGPTTokenizer(
+var tokenizer = new BertJa2GPTTokenizer(
     encoderDictDir: encoderDictDir, encoderVocabPath: encoderVocabPath,
     decoderVocabPath: decoderVocabPath);
 
@@ -81,8 +82,8 @@ void TestTokenizer(ITokenizer tokenizer)
     Console.WriteLine($"Encoded: {string.Join(", ", embeddingsJa)}");
 
     Console.WriteLine("[Decode]");
-    // Tokens of "음, 이제 식사도 해볼까요"
-    var tokens = new uint[] { 9330, 387, 12857, 9376, 18649, 9098, 7656, 6969, 8084, 1 };
+    // Tokens of "i was nervous before the exam, and i had a fever."
+    var tokens = new uint[] { 72, 373, 10927, 878, 262, 2814, 11, 290, 1312, 550, 257, 17372, 13 };
     Console.WriteLine($"Input: {string.Join(", ", tokens)}");
     var decoded = tokenizer.Decode(tokens);
     Console.WriteLine($"Decoded: {decoded}");
@@ -90,9 +91,9 @@ void TestTokenizer(ITokenizer tokenizer)
 TestTokenizer(tokenizer);
 
 // Prepare the translator
-string modelDir = @"D:\MODEL\ffxiv-ja-ko-translator\onnx"; // Contains encoder_model.onnx and decoder_model_merged.onnx
-var translator = new FF14JaKoTranslator(tokenizer, modelDir);
-void TestTranslator(FF14JaKoTranslator translator)
+string modelDir = @"D:\MODEL\jesc-ja-en-translator\onnx"; // The folder should contains encoder_model.onnx and decoder_model_merged.onnx
+var translator = new JESCJaEnTranslator(tokenizer, modelDir);
+void TestTranslator(JESCJaEnTranslator translator)
 {
     Console.WriteLine("--Translator test--");
     Translate(translator, "打ち合わせが終わった後にご飯を食べましょう。");
@@ -102,7 +103,7 @@ void TestTranslator(FF14JaKoTranslator translator)
 }
 TestTranslator(translator);
 
-static void Translate(FF14JaKoTranslator translator, string sentence)
+static void Translate(JESCJaEnTranslator translator, string sentence)
 {
     Console.WriteLine($"SourceText: {sentence}");
     string translated = translator.Translate(sentence);
@@ -113,8 +114,8 @@ static void Translate(FF14JaKoTranslator translator, string sentence)
 # How to build
 
 1. Prepare following stuff:
-   1.  .NET build system (`dotnet 6.0`)
-   2.  PowerShell (Recommend `7.4.2` or above)
+   1. .NET build system (`dotnet 6.0`)
+   2. PowerShell (Recommend `7.4.2` or above)
 2. Run `cbuild.ps1`
 
-The build artifact will be saved in `nuget` directory.  
+The build artifact will be saved in `nuget` directory.
