@@ -6,12 +6,12 @@ using NumSharp;
 
 namespace EDMTranslator.Translation
 {
-    public class AihubJaKoTranslator : EncoderDecoderTranslator
+    public class AIhubJaKoTranslator : EncoderDecoderTranslator
     {
         private readonly InferenceSession encoderSession;
         private readonly InferenceSession decoderSession;
 
-        public AihubJaKoTranslator(BertJa2GPTTokenizer tokenizer, string modelDirPath) : base(
+        public AIhubJaKoTranslator(BertJa2GPTTokenizer tokenizer, string modelDirPath) : base(
             modelName: "aihub-ja-ko-translator",
             modelHubName: "sappho192/aihub-ja-ko-translator",
             tokenizer: tokenizer)
