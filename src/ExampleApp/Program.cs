@@ -1,16 +1,6 @@
 ﻿using EDMTranslator.Tokenization;
 using EDMTranslator.Translation;
 
-// Prepare the tokenizer
-var encoderVocabPath = await BertJapaneseTokenizer.HuggingFace.GetVocabFromHub("tohoku-nlp/bert-base-japanese-v2");
-var hubName = "skt/kogpt2-base-v2";
-var decoderVocabFilename = "tokenizer.json";
-var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
-
-string encoderDictDir = @"D:\DATASET\unidic-mecab-2.1.2_bin";
-var tokenizer = new BertJa2GPTTokenizer(
-    encoderDictDir: encoderDictDir, encoderVocabPath: encoderVocabPath,
-    decoderVocabPath: decoderVocabPath);
 
 void TestTokenizer(ITokenizer tokenizer)
 {
@@ -28,11 +18,7 @@ void TestTokenizer(ITokenizer tokenizer)
     var decoded = tokenizer.Decode(tokens);
     Console.WriteLine($"Decoded: {decoded}");
 }
-TestTokenizer(tokenizer);
 
-// Prepare the translator
-string modelDir = @"D:\MODEL\ffxiv-ja-ko-translator\onnx";
-var translator = new FF14JaKoTranslator(tokenizer, modelDir);
 void TestTranslator(FF14JaKoTranslator translator)
 {
     Console.WriteLine("--Translator test--");
@@ -41,7 +27,6 @@ void TestTranslator(FF14JaKoTranslator translator)
     Translate(translator, "山田は英語にかけてはクラスの誰にも負けない。");
     Translate(translator, "この本によれば、最初の人工橋梁は新石器時代にさかのぼるという。");
 }
-TestTranslator(translator);
 
 static void Translate(FF14JaKoTranslator translator, string sentence)
 {
@@ -49,3 +34,23 @@ static void Translate(FF14JaKoTranslator translator, string sentence)
     string translated = translator.Translate(sentence);
     Console.WriteLine($"Translated: {translated}");
 }
+
+//// Test with ffxiv-ja-ko-translator
+// Prepare the tokenizer
+var encoderVocabPath = await BertJapaneseTokenizer.HuggingFace.GetVocabFromHub("tohoku-nlp/bert-base-japanese-v2");
+var hubName = "skt/kogpt2-base-v2";
+var decoderVocabFilename = "tokenizer.json";
+var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
+
+string encoderDictDir = @"D:\DATASET\unidic-mecab-2.1.2_bin";
+var tokenizer = new BertJa2GPTTokenizer(
+    encoderDictDir: encoderDictDir, encoderVocabPath: encoderVocabPath,
+    decoderVocabPath: decoderVocabPath);
+
+TestTokenizer(tokenizer);
+
+// Prepare the translator
+string modelDir = @"D:\MODEL\ffxiv-ja-ko-translator\onnx";
+var translator = new FF14JaKoTranslator(tokenizer, modelDir);
+
+TestTranslator(translator);
