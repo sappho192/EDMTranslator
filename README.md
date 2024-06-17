@@ -23,12 +23,13 @@ Text translator library based on LLM models, especially EncoderDecoderModel in H
 # Requirements
 
 * .NET 6 or above
+* **Free RAM spaces at least 3.5GB** before running the translator
 
 # Supported models
 
-* JESCJaEnTranslator([sappho192/jesc-ja-en-translator](https://huggingface.co/sappho192/jesc-ja-en-translator)): Japanese-to-English translator based on `bert-base-japanese` and `gpt2`, fine-tuned with JESC dataset
-* FF14JaKoTranslator([sappho192/ffxiv-ja-ko-translator](https://github.com/sappho192/ffxiv-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`, fine-tuned with FF14 dataset
-* AihubJaKoTranslator([sappho192/aihub-ja-ko-translator](https://huggingface.co/sappho192/aihub-ja-ko-translator)): Japanese-to-Korean translator based on `bert-base-japanese` and `skt-kogpt2-base-v2`, fine-tuned with AIHub dataset
+* JESCJaEnTranslator([sappho192/jesc-ja-en-translator](https://huggingface.co/sappho192/jesc-ja-en-translator)): Japanese-to-English translator based on `tohoku-nlp/bert-base-japanese-v2` and `openai-community/gpt2`, fine-tuned with JESC dataset
+* FF14JaKoTranslator([sappho192/ffxiv-ja-ko-translator](https://github.com/sappho192/ffxiv-ja-ko-translator)): Japanese-to-Korean translator based on `tohoku-nlp/bert-base-japanese-v2` and `skt/kogpt2-base-v2`, fine-tuned with FF14 dataset
+* AihubJaKoTranslator([sappho192/aihub-ja-ko-translator](https://huggingface.co/sappho192/aihub-ja-ko-translator)): Japanese-to-Korean translator based on `tohoku-nlp/bert-base-japanese-v2` and `skt/kogpt2-base-v2`, fine-tuned with AIHub dataset
 * More to be added...
 
 # Quickstart
