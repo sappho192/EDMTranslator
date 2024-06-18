@@ -115,7 +115,7 @@ static void Translate(JESCJaEnTranslator translator, string sentence)
 # How to build
 
 1. Prepare following stuff:
-   1. .NET build system (`dotnet 6.0`)
+   1. .NET build system (`dotnet 6.0, 7.0, 8.0`)
    2. PowerShell (Recommend `7.4.2` or above)
 2. Run `cbuild.ps1`
 
