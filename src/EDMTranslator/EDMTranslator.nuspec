@@ -20,19 +20,19 @@
         <dependency id="BertJapaneseTokenizer" version="1.0.8" />
         <dependency id="Microsoft.ML.OnnxRuntime" version="1.17.3" />
         <dependency id="NumSharp" version="0.30.0" />
-        <dependency id="Tokenizers.DotNet" version="0.9.2" />
+        <dependency id="Tokenizers.DotNet" version="1.0.1" />
       </group>
       <group targetFramework="net7.0">
         <dependency id="BertJapaneseTokenizer" version="1.0.8" />
         <dependency id="Microsoft.ML.OnnxRuntime" version="1.17.3" />
         <dependency id="NumSharp" version="0.30.0" />
-        <dependency id="Tokenizers.DotNet" version="0.9.2" />
+        <dependency id="Tokenizers.DotNet" version="1.0.1" />
       </group>
       <group targetFramework="net8.0">
         <dependency id="BertJapaneseTokenizer" version="1.0.8" />
         <dependency id="Microsoft.ML.OnnxRuntime" version="1.17.3" />
         <dependency id="NumSharp" version="0.30.0" />
-        <dependency id="Tokenizers.DotNet" version="0.9.2" />
+        <dependency id="Tokenizers.DotNet" version="1.0.1" />
       </group>
     </dependencies>
   </metadata>

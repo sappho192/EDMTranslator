@@ -32,7 +32,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Tokenizers.DotNet" Version="0.9.2" />
+    <PackageReference Include="Tokenizers.DotNet" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
