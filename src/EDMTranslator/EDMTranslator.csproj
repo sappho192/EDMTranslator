@@ -25,14 +25,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BertJapaneseTokenizer" Version="1.0.8" />
+    <PackageReference Include="BertJapaneseTokenizer" Version="1.0.9" />
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.17.3" />
     <PackageReference Include="NumSharp" Version="0.30.0" />
     <PackageReference Include="RelaxVersioner" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Tokenizers.DotNet" Version="1.0.1" />
+    <PackageReference Include="Tokenizers.DotNet" Version="1.0.5" />
   </ItemGroup>
 
 </Project>

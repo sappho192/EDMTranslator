@@ -17,22 +17,22 @@
     <readme>docs\README.md</readme>
     <dependencies>
       <group targetFramework="net6.0">
-        <dependency id="BertJapaneseTokenizer" version="1.0.8" />
+        <dependency id="BertJapaneseTokenizer" version="1.0.9" />
         <dependency id="Microsoft.ML.OnnxRuntime" version="1.17.3" />
         <dependency id="NumSharp" version="0.30.0" />
-        <dependency id="Tokenizers.DotNet" version="1.0.1" />
+        <dependency id="Tokenizers.DotNet" version="1.0.5" />
       </group>
       <group targetFramework="net7.0">
-        <dependency id="BertJapaneseTokenizer" version="1.0.8" />
+        <dependency id="BertJapaneseTokenizer" version="1.0.9" />
         <dependency id="Microsoft.ML.OnnxRuntime" version="1.17.3" />
         <dependency id="NumSharp" version="0.30.0" />
-        <dependency id="Tokenizers.DotNet" version="1.0.1" />
+        <dependency id="Tokenizers.DotNet" version="1.0.5" />
       </group>
       <group targetFramework="net8.0">
-        <dependency id="BertJapaneseTokenizer" version="1.0.8" />
+        <dependency id="BertJapaneseTokenizer" version="1.0.9" />
         <dependency id="Microsoft.ML.OnnxRuntime" version="1.17.3" />
         <dependency id="NumSharp" version="0.30.0" />
-        <dependency id="Tokenizers.DotNet" version="1.0.1" />
+        <dependency id="Tokenizers.DotNet" version="1.0.5" />
       </group>
     </dependencies>
   </metadata>
