@@ -45,7 +45,7 @@ Following guide **supposes that you are to use JESCJaEnTranslator** mentioned ab
 
 ### Japanese dictionary
 
-* Download unidic mecab dictionary `unidic-mecab-2.1.2_bin.zip` from [https://clrd.ninjal.ac.jp/unidic_archive/cwj/2.1.2/]() and unzip the archive into somewhere
+* Download unidic mecab dictionary `unidic-mecab-2.1.2_bin.zip` from https://clrd.ninjal.ac.jp/unidic_archive/cwj/2.1.2/ and unzip the archive into somewhere
 
 ### Fine-tuned translator model
 
