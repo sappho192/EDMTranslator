@@ -1,10 +1,10 @@
 ﻿---
 ff14_ja_ko_translator:
-  encoder_dict_dir: D:\DATASET\unidic-mecab-2.1.2_bin
-  model_dir: D:\MODEL\ffxiv-ja-ko-translator\onnx
+  encoder_dict_dir: G:\DATASET\unidic-mecab-2.1.2_bin
+  model_dir: G:\MODEL\ffxiv-ja-ko\onnx
 aihub_ja_ko_translator:
-  encoder_dict_dir: D:\DATASET\unidic-mecab-2.1.2_bin
-  model_dir: D:\MODEL\aihub-ja-ko\onnx
+  encoder_dict_dir: G:\DATASET\unidic-mecab-2.1.2_bin
+  model_dir: G:\MODEL\aihub-ja-ko\onnx
 jesc_ja_en_translator:
-  encoder_dict_dir: D:\DATASET\unidic-mecab-2.1.2_bin
-  model_dir: D:\MODEL\jesc-ja-en\onnx
+  encoder_dict_dir: G:\DATASET\unidic-mecab-2.1.2_bin
+  model_dir: G:\MODEL\jesc-ja-en\onnx

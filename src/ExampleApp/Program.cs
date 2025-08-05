@@ -42,7 +42,7 @@ var hubName = "skt/kogpt2-base-v2";
 var decoderVocabFilename = "tokenizer.json";
 var decoderVocabPath = await Tokenizers.DotNet.HuggingFace.GetFileFromHub(hubName, decoderVocabFilename, "deps");
 
-string encoderDictDir = @"D:\DATASET\unidic-mecab-2.1.2_bin";
+string encoderDictDir = @"G:\DATASET\unidic-mecab-2.1.2_bin";
 var tokenizer = new BertJa2GPTTokenizer(
     encoderDictDir: encoderDictDir, encoderVocabPath: encoderVocabPath,
     decoderVocabPath: decoderVocabPath);
@@ -50,7 +50,7 @@ var tokenizer = new BertJa2GPTTokenizer(
 TestTokenizer(tokenizer);
 
 // Prepare the translator
-string modelDir = @"D:\MODEL\ffxiv-ja-ko-translator\onnx";
+string modelDir = @"G:\MODEL\ffxiv-ja-ko\onnx";
 var translator = new FF14JaKoTranslator(tokenizer, modelDir);
 
 TestTranslator(translator);
